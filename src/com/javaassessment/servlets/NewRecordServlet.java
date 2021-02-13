@@ -26,13 +26,12 @@ public class NewRecordServlet extends HttpServlet {
 		
 		//MESSAGE = "(VALIDATION ERROR: Name or surname must start with \"A\"!)";
 		//parameterAuthor may contain information about invalid author (MESSAGE) if this servlet is called again so MESSAGE must be removed
-		String parameterAuthor = request.getParameter("author").replace(Utils.MESSAGE, "");
 		
 		
 		//getFullName and checkEntry from class Book allow to obtain valid values or default values by using returnMessage
-		author = Book.getFullName(parameterAuthor);
-		title = Book.checkEntry(request.getParameter("title"), returnMessage);
-		isbn = Book.checkEntry(request.getParameter("isbn"), returnMessage);
+		author = Book.getFullName(request.getParameter("author").trim());
+		title = Book.checkEntry(request.getParameter("title").trim(), returnMessage);
+		isbn = Book.checkEntry(request.getParameter("isbn").trim(), returnMessage);
 		log("Fields: author, title, isbn obtained!");
 
 		/*Control flow: if... author name is correct (one of the words starts with capital "A") then new book is created and it's added to static
@@ -44,13 +43,20 @@ public class NewRecordServlet extends HttpServlet {
 			Book.createBook(author, title, isbn);
 			page = "listPage.jsp";
 //			page = "/listPage.jsp";
+			
 		} else {
 			/*Control flow: else... new attribute is set to "error" and again "newRecordPage.jsp" will be loaded outside if-else statement
 				*/
-			log("Validation of author name failed");
-			request.setAttribute("author_validation", "Validation of author name failed - name must start with letter \"A\"");
-			request.setAttribute("title", title);
-			request.setAttribute("isbn", isbn);
+			
+			if (!Book.validateName(author)) {
+				log("Validation of author name failed");
+				request.setAttribute("author_validation","Validation of author name failed - name must start with letter \"A\"");
+			}
+			
+				request.setAttribute("title", title);
+			
+				request.setAttribute("isbn", isbn);
+				
 			request.setAttribute("author_origin", author);
 //			page = "newRecordPage.jsp";
 			page = "newRecordPage.jsp";
