@@ -1,0 +1,26 @@
+p {
+	border-style: solid;
+	padding: 15px
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.blue {
+	color: blue;
+}
+
+label {
+	float: left;
+	width: 10em;
+	margin-right: 1em;
+}
+
+.redBorder {
+	border: 2px solid red;
+}
