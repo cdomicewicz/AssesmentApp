@@ -29,8 +29,17 @@
 			
 			// If there is ann error in author name
 			if(author_validation != null && !author_validation.isEmpty()) {
+			//if((author_validation != null && !author_validation.isEmpty()) || author_validation.equals("correct")) {
 				authorOrigin = authorOrigin.replace(message, "").trim();
+				if (!author_validation.equals("correct")) {
+					
 					out.println("<div class=\"mb-3\"><label for=\"author\" class=\"form-label\">Author:</label> <input type=\"text\" class=\"form-control\"	name=\"author\" id=\"author\" value =\"" + authorOrigin +" \" aria-describedby=\"authorHelp\"><div id=\"authorHelp\" style=\"color: red;text-align: left;\" class=\"form-text\">" + author_validation + "</div>");
+				} else {
+					//out.println("<div class=\"mb-3\"><input type=\"text\" class=\"form-control\"	name=\"author\" id=\"author\" value =\"" + authorOrigin +" \" aria-describedby=\"authorHelp\"><div id=\"authorHelp\" style=\"color: red;text-align: left;\" class=\"form-text\">" + author_validation + "</div>");
+					out.println("<input type=\"text\" class=\"form-control\"	name=\"author\" id=\"author\" value =\"" + authorOrigin +" \" aria-describedby=\"authorHelp\"/>");
+
+					
+				}
 				//Additional message infor is removed
 				//If user didn't put any author then in return message will be displayed
 				//if(authorOrigin != null && authorOrigin.isEmpty()) {

@@ -71,7 +71,7 @@ public class Book {
 	 * Otherwise method return false
 	 **/ 
 	public static boolean validateName(String inputName) {
-		String[] split = inputName.split(" ");
+		String[] split = inputName.trim().split(" ");
 		if (split.length >= 2) {
 			String forename = split[0];
 			String name = split[1];
