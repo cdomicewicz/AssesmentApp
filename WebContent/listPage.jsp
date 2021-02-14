@@ -17,6 +17,7 @@
 
 </head>
 <body>
+<!--  This is main page with records -->
 	<center>
 		<h1>Java Assessment</h1>
 		<h2>List page</h2>
@@ -32,6 +33,7 @@
 			</thead>
 			<tbody>
 			<%
+			//If there are some books in static field allBooks in class Book then they are displayed
 			List<Book> books = Book.getAllBooks();
 			if (books != null && !books.isEmpty()) {
 				int i = 1;
@@ -44,7 +46,7 @@
 					i++;
 				}
 			} else {
-				
+				//If there are not any books in static field allBooks in class Book then "No record" info is displayed
 				out.println("<tr><th scope=\"row\" >1</th>");
 				for (int i = 0; i <= 2; i++) {
 					out.println("<td style=\"color: red;\">No record</td>");
@@ -57,6 +59,7 @@
 		</table>
 
 		<br> <br>
+		<!-- Add new record button -->
 		<a href="/Books/newRecordPage.jsp" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Add new record</a>
 		<!--  <a href="/newRecordPage.jsp">Add new record</a>-->
 		

@@ -42,23 +42,22 @@ public class NewRecordServlet extends HttpServlet {
 
 		} else {
 			/*
-			 * Control flow: else... parameteres author_validation, title and isbn are set.
+			 * Control flow: else... author_validation, title and isbn are set.
 			 * "newRecordPage.jsp" will be loaded outside if-else statement
 			 */
 			
 			String message;
 			if (!Book.validateName(author)) {
 				log("Validation of author name failed");
-				message = "Validation of author name failed - name must start with letter \"A\"";
-				request.setAttribute("author_validation", message);
+				message = Utils.MESSAGE_FAILED;
 			} else {
-				message = "correct";
-				request.setAttribute("author_validation", "correct");
+				log("Author name validated");
+				message = Utils.MESSAGE_CORRECT;
 			}
-
+			
+			request.setAttribute("author_validation", message);
 			request.setAttribute("title", title);
 			request.setAttribute("isbn", isbn);
-
 			request.setAttribute("author_origin", author);
 			page = "newRecordPage.jsp";
 		}

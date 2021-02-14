@@ -18,7 +18,9 @@ import com.javaassessment.servlets.ListServlet;
 //Utils is an utility class that collects useful methods that are used in servlets etc.
 public class Utils {
 
-	public static final String MESSAGE = "Validation of author name failed - name must start with letter \"A\"";
+	//Fileds used in other classes
+	public static final String MESSAGE_FAILED = "Validation of author name failed - name must start with letter \"A\"";
+	public static final String MESSAGE_CORRECT = "correct";
 	public static final String EMPTY_FIELD = "Empty field";
 	
 	//Method allows logging to console
@@ -37,6 +39,5 @@ public class Utils {
 		view.forward(request, response);
 		log("\\" + page +"\\ loaded!");
 	}
-	
 	
 }
