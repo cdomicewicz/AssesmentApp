@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//This sevlet reads response, loads listPage.jsp and prints some outputs via logger in method "log)
+		//This sevlet reads response, loads listPage.jsp and prints some outputs by logger in method "log)
 		log("Logger started");
 		PrintWriter out = response.getWriter();
 		log("Writer obtained");
